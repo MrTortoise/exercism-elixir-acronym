@@ -27,8 +27,8 @@ defmodule Acronym do
      existing ++ [first | get_upper_chars_if_case_change(rest, is_upper(first))]
   end
 
-  def get_upper_chars_if_case_change([], _), do: []
-  def get_upper_chars_if_case_change([h | t], false) do
+  defp get_upper_chars_if_case_change([], _), do: []
+  defp get_upper_chars_if_case_change([h | t], false) do
     upper = is_upper(h)
     if (upper) do
       [h | get_upper_chars_if_case_change(t, true)]
@@ -37,7 +37,7 @@ defmodule Acronym do
     end
   end
 
-  def get_upper_chars_if_case_change([h | t], true) do
+  defp get_upper_chars_if_case_change([h | t], true) do
     get_upper_chars_if_case_change(t, is_upper(h))
   end
 end
